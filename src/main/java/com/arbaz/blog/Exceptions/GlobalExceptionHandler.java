@@ -36,9 +36,9 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<Map<String,String>>(errors,HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(PropertyReferenceException.class)
-    public ResponseEntity<APIResponse> propertyReferenceExceptionResponseEntity(PropertyReferenceException propertyReferenceException){
-        String message = propertyReferenceException.getMessage();
+    @ExceptionHandler(PropertyResponseException.class)
+    public ResponseEntity<APIResponse> propertyResponseExceptionResponseEntity(PropertyResponseException propertyResponseException){
+        String message = propertyResponseException.getMessage();
         APIResponse apiResponse = new APIResponse(message,false);
         return new ResponseEntity<APIResponse>(apiResponse,HttpStatus.BAD_REQUEST);
     }
