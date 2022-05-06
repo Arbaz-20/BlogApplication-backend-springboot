@@ -56,7 +56,7 @@ public class PostServiceImplementation implements PostService {
 
         //CreatingPost
         Post post = this.modelMapper.map(postDTO,Post.class);
-        post.setImageName("");
+        post.setImageName("Default.png");
         post.setDate(new Date());
         post.setUser(user);
         post.setCategory(category);
@@ -76,7 +76,7 @@ public class PostServiceImplementation implements PostService {
         Post post = this.postRepository.findById(postId).orElseThrow(()-> new ResourceNotFoundException("Post","PostId",postId));
         post.setTitle(postDTO.getTitle());
         post.setContent(postDTO.getContent());
-        post.setImageName("Default.png");
+        post.setImageName(postDTO.getImageName());
         post.setDate(new Date());
         Post savePost = this.postRepository.save(post);
 

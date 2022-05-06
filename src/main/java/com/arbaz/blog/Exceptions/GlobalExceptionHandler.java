@@ -7,6 +7,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MultipartException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +43,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(StringIndexOutOfBoundsException.class)
     public ResponseEntity<APIResponse> stringIndexOutOfBoundException(StringIndexOutOfBoundsException stringIndexOutOfBoundsException){
+        String message = "Please Select an Image to Upload";
+        APIResponse apiResponse = new APIResponse(message,false);
+        return new ResponseEntity<APIResponse>(apiResponse,HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MultipartException.class)
+    public ResponseEntity<APIResponse> multipartException(MultipartException multipartException){
         String message = "Please Select an Image to Upload";
         APIResponse apiResponse = new APIResponse(message,false);
         return new ResponseEntity<APIResponse>(apiResponse,HttpStatus.BAD_REQUEST);

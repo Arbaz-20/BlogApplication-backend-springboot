@@ -8,12 +8,16 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 
@@ -30,6 +34,8 @@ public class PostController {
     @Value("${project.image}")
     private String path;
 
+
+    //We can use the Image post Mapping with this aswell its all depends what we think of coding
     //Create Post
     @PostMapping("/user/{userId}/category/{categoryId}/posts")
     public ResponseEntity<PostDTO>CreatePost(@RequestBody PostDTO postDTO, @PathVariable("userId") int userId,@PathVariable("categoryId") int categoryId){
@@ -101,14 +107,22 @@ public class PostController {
 
     //Image Name save in Database with the image save in images folder
     //Create Post with the Image
-    @PostMapping("/image/upload/{postId}")
+    @PostMapping(value = "/image/upload/{postId}",produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<PostDTO> PostImage(@PathVariable("postId") Integer postId,@RequestParam("image") MultipartFile file) throws IOException {
-
         PostDTO postDTO = this.postService.GetPostById(postId);
-
         String FileName = this.fileService.UploadImage(path,file);
         postDTO.setImageName(FileName);
         PostDTO updatePost = this.postService.UpdatePost(postDTO,postId);
         return new ResponseEntity<PostDTO>(updatePost,HttpStatus.OK);
+    }
+
+
+    //Get Image from the folder
+    @GetMapping(value = "/profile/{ImageName}",produces = MediaType.IMAGE_JPEG_VALUE)
+    public void DownloadImage(@PathVariable("ImageName") String ImageName, HttpServletResponse response) throws IOException {
+        InputStream resource = this.fileService.getResource(path,ImageName);
+        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+        StreamUtils.copy(resource,response.getOutputStream());
+
     }
 }
