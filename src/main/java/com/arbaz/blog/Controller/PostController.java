@@ -2,14 +2,18 @@ package com.arbaz.blog.Controller;
 
 import com.arbaz.blog.DTO.PostDTO;
 import com.arbaz.blog.DTO.PostResponse;
-import com.arbaz.blog.Entity.Post;
+import com.arbaz.blog.Services.FileService;
 import com.arbaz.blog.Services.PostService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -19,6 +23,12 @@ public class PostController {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private FileService fileService;
+
+    @Value("${project.image}")
+    private String path;
 
     //Create Post
     @PostMapping("/user/{userId}/category/{categoryId}/posts")
@@ -82,9 +92,23 @@ public class PostController {
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
 
+    //Get Post by keyword or Keyword
     @GetMapping("/posts/{keyword}")
     public ResponseEntity<List<PostDTO>> SearchPostByTitle(@PathVariable("keyword") String keyword){
         List<PostDTO> post = this.postService.SearchPost(keyword);
         return new ResponseEntity<List<PostDTO>>(post,HttpStatus.FOUND);
+    }
+
+    //Image Name save in Database with the image save in images folder
+    //Create Post with the Image
+    @PostMapping("/image/upload/{postId}")
+    public ResponseEntity<PostDTO> PostImage(@PathVariable("postId") Integer postId,@RequestParam("image") MultipartFile file) throws IOException {
+
+        PostDTO postDTO = this.postService.GetPostById(postId);
+
+        String FileName = this.fileService.UploadImage(path,file);
+        postDTO.setImageName(FileName);
+        PostDTO updatePost = this.postService.UpdatePost(postDTO,postId);
+        return new ResponseEntity<PostDTO>(updatePost,HttpStatus.OK);
     }
 }

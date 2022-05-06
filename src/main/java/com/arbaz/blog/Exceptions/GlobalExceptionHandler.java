@@ -39,4 +39,11 @@ public class GlobalExceptionHandler {
         APIResponse apiResponse = new APIResponse(message,false);
         return new ResponseEntity<APIResponse>(apiResponse,HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(StringIndexOutOfBoundsException.class)
+    public ResponseEntity<APIResponse> stringIndexOutOfBoundException(StringIndexOutOfBoundsException stringIndexOutOfBoundsException){
+        String message = "Please Select an Image to Upload";
+        APIResponse apiResponse = new APIResponse(message,false);
+        return new ResponseEntity<APIResponse>(apiResponse,HttpStatus.BAD_REQUEST);
+    }
 }

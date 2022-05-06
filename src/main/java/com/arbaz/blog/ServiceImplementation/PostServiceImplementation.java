@@ -1,5 +1,6 @@
 package com.arbaz.blog.ServiceImplementation;
 
+import com.arbaz.blog.Controller.PostController;
 import com.arbaz.blog.DTO.PostDTO;
 import com.arbaz.blog.DTO.PostResponse;
 import com.arbaz.blog.Entity.Category;
@@ -55,7 +56,7 @@ public class PostServiceImplementation implements PostService {
 
         //CreatingPost
         Post post = this.modelMapper.map(postDTO,Post.class);
-        post.setImageName("Default.png");
+        post.setImageName("");
         post.setDate(new Date());
         post.setUser(user);
         post.setCategory(category);
@@ -197,5 +198,16 @@ public class PostServiceImplementation implements PostService {
         List<Post> posts = this.postRepository.SearchByKeyword("%"+keyword+"%");
         List<PostDTO> postDTOS = posts.stream().map((post -> this.modelMapper.map(post,PostDTO.class))).collect(Collectors.toList());
         return postDTOS;
+    }
+
+
+    public Post DTOtoPost(PostDTO postDTO){
+        Post post = this.modelMapper.map(postDTO,Post.class);
+        return post;
+    }
+
+    public PostDTO PostTOPostDTO(Post post){
+        PostDTO postDTO = this.modelMapper.map(post,PostDTO.class);
+        return postDTO;
     }
 }
