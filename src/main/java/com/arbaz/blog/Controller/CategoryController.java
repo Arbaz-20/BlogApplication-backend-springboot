@@ -19,28 +19,28 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    //Create
+    //Create Category
     @PostMapping("/create")
     public ResponseEntity<CategoryDTO> CreateCategory(@Valid @RequestBody CategoryDTO categoryDTO){
         CategoryDTO category = this.categoryService.CreateCategory(categoryDTO);
         return new ResponseEntity<CategoryDTO>(category, HttpStatus.CREATED);
     }
 
-    //Update
+    //Update Category
     @PutMapping("category/{id}")
     public ResponseEntity<CategoryDTO> UpdateCategory(@Valid @PathVariable("id") int categoryId , @RequestBody CategoryDTO categoryDTO){
         CategoryDTO categoryDTO1 = this.categoryService.UpdateCategory(categoryDTO,categoryId);
         return new ResponseEntity<CategoryDTO>(categoryDTO1,HttpStatus.OK);
     }
 
-    //Get
+    //Get Category
     @GetMapping("/getCategory/{id}")
     public ResponseEntity<CategoryDTO> GetUserById(@Valid @PathVariable("id") int categoryId){
         CategoryDTO categoryDTO = this.categoryService.getCategory(categoryId);
         return new ResponseEntity<CategoryDTO>(categoryDTO,HttpStatus.OK);
     }
 
-    //GetAll
+    //Get All Category
     @GetMapping("/getAllCategories")
     public ResponseEntity<List<CategoryDTO>> GetAllCategories(){
         List<CategoryDTO> categoryDTOList = this.categoryService.getAllCategory();
@@ -48,7 +48,7 @@ public class CategoryController {
     }
 
 
-    //Delete
+    //Delete Category
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> DeleteCategoryById(@Valid @PathVariable("id") int categoryId){
         this.categoryService.DeleteCategory(categoryId);
@@ -56,11 +56,11 @@ public class CategoryController {
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
 
-    //DeleteAll
+    //Delete All Category
     @DeleteMapping("/delete")
     public ResponseEntity<?> DeleteAllCategory(){
         this.categoryService.DeleteAllCategories();
-        String message = "Deleted All Categories";
+        String message = "Deleted All Categories Successfully";
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
 }
