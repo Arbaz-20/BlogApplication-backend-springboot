@@ -1,10 +1,13 @@
 package com.arbaz.blog.Controller;
 
 import com.arbaz.blog.DTO.PostDTO;
+
 import com.arbaz.blog.DTO.PostResponse;
+
 import com.arbaz.blog.Services.FileService;
+
 import com.arbaz.blog.Services.PostService;
-import org.modelmapper.ModelMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -107,13 +110,13 @@ public class PostController {
 
     //Image Name save in Database with the image save in images folder
     //Create Post with the Image
-    @PostMapping(value = "/image/upload/{postId}",produces = MediaType.IMAGE_JPEG_VALUE)
+    @PostMapping(value = "/image/upload/{postId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PostDTO> PostImage(@PathVariable("postId") Integer postId,@RequestParam("image") MultipartFile file) throws IOException {
         PostDTO postDTO = this.postService.GetPostById(postId);
         String FileName = this.fileService.UploadImage(path,file);
         postDTO.setImageName(FileName);
         PostDTO updatePost = this.postService.UpdatePost(postDTO,postId);
-        return new ResponseEntity<PostDTO>(updatePost,HttpStatus.OK);
+        return new ResponseEntity<>(updatePost,HttpStatus.OK);
     }
 
 
