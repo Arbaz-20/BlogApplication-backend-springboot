@@ -1,13 +1,15 @@
 package com.arbaz.blog.DTO;
 
-import com.arbaz.blog.Entity.Category;
-import com.arbaz.blog.Entity.User;
+import com.arbaz.blog.Entity.Comment;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
@@ -29,6 +31,8 @@ public class PostDTO {
     private CategoryDTO category;
 
     private UserDTO user;
+
+    private Set<CommentDTO> comments = new HashSet<>();
 
 
 }

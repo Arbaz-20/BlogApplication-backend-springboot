@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Getter
@@ -39,5 +39,7 @@ public class Post {
     @ManyToOne
     private User user;
 
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Comment> comments = new HashSet<>();
 
 }
