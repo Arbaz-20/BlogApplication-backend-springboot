@@ -11,11 +11,15 @@ public class GlobalConfiguration {
 
     @Bean
     public ModelMapper modelMapper(){
+
+        //Returning the ModelMapper Object to make the binding of the objects from one to another object
         return new ModelMapper();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
+
+        //Returning the CCryptPasswordEncoder's Bean to the Dependency Injection
         return new BCryptPasswordEncoder();
     }
 

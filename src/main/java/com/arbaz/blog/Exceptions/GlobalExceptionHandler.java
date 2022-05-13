@@ -54,4 +54,5 @@ public class GlobalExceptionHandler {
         APIResponse apiResponse = new APIResponse(message,false);
         return new ResponseEntity<APIResponse>(apiResponse,HttpStatus.BAD_REQUEST);
     }
+
 }
