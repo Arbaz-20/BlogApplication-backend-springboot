@@ -58,8 +58,8 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MalformedJwtException.class)
-    public ResponseEntity<APIResponse> UnAuthorizeAccess(MalformedJwtException forbidden){
-        String error = forbidden.getMessage().toString();
+    public ResponseEntity<APIResponse> malformedJwtException(MalformedJwtException malformedJwtException){
+        String error = malformedJwtException.getMessage();
         APIResponse apiResponse = new APIResponse(error,false);
         return new ResponseEntity<APIResponse>(apiResponse,HttpStatus.FORBIDDEN);
     }

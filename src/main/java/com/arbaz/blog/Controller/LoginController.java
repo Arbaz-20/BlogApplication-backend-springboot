@@ -31,7 +31,7 @@ public class LoginController {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getName(),authenticationRequest.getPassword())
             );
-        }catch(MalformedJwtException e){
+        }catch(Exception e){
             return new ResponseEntity<APIResponse>(new APIResponse(e.getMessage(),false),HttpStatus.BAD_REQUEST);
 
         }
