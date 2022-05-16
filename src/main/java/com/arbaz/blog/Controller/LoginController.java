@@ -3,6 +3,7 @@ package com.arbaz.blog.Controller;
 import com.arbaz.blog.DTO.APIResponse;
 import com.arbaz.blog.Entity.AuthenticationRequest;
 import com.arbaz.blog.Utils.JwtUtil;
+import io.jsonwebtoken.MalformedJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,8 +31,8 @@ public class LoginController {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getName(),authenticationRequest.getPassword())
             );
-        }catch(Exception e){
-            return new ResponseEntity(new APIResponse(e.getMessage() +"Invalid Details",false),HttpStatus.BAD_REQUEST);
+        }catch(MalformedJwtException e){
+            return new ResponseEntity<APIResponse>(new APIResponse(e.getMessage(),false),HttpStatus.BAD_REQUEST);
 
         }
         String token = jwtUtil.generateToken(authenticationRequest.getName());

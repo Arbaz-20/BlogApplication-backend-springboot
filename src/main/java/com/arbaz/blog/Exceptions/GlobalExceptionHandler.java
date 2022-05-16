@@ -1,12 +1,14 @@
 package com.arbaz.blog.Exceptions;
 
 import com.arbaz.blog.DTO.APIResponse;
+import io.jsonwebtoken.MalformedJwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.multipart.MultipartException;
 
 import java.util.HashMap;
@@ -53,6 +55,13 @@ public class GlobalExceptionHandler {
         String message = "Please Select an Image to Upload";
         APIResponse apiResponse = new APIResponse(message,false);
         return new ResponseEntity<APIResponse>(apiResponse,HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MalformedJwtException.class)
+    public ResponseEntity<APIResponse> UnAuthorizeAccess(MalformedJwtException forbidden){
+        String error = forbidden.getMessage().toString();
+        APIResponse apiResponse = new APIResponse(error,false);
+        return new ResponseEntity<APIResponse>(apiResponse,HttpStatus.FORBIDDEN);
     }
 
 }
