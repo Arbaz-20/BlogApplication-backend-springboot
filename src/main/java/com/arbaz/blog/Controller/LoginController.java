@@ -33,7 +33,6 @@ public class LoginController {
             );
         }catch(Exception e){
             return new ResponseEntity<APIResponse>(new APIResponse(e.getMessage(),false),HttpStatus.BAD_REQUEST);
-
         }
         String token = jwtUtil.generateToken(authenticationRequest.getName());
         return new ResponseEntity(new APIResponse(token,true),HttpStatus.OK);
