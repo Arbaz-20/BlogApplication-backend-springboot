@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -27,13 +27,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtFilter jwtFilter;
 
+    //Authorization
     @Override
     protected void configure(HttpSecurity http) throws Exception {
             http
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/auth/login").permitAll()
+                .antMatchers("/user").permitAll().antMatchers("/auth/login").permitAll()
+                    .and().authorizeRequests().antMatchers("/user/**")
+                    .authenticated()
                 .anyRequest()
                 .authenticated()
                     .and()
@@ -45,6 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     }
 
+    //Authentication
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserDetailsService);

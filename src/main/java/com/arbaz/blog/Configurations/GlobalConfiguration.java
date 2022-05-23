@@ -19,9 +19,7 @@ public class GlobalConfiguration {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
-
-        //Returning the CCryptPasswordEncoder's Bean to the Dependency Injection
+    public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 

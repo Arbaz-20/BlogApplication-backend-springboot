@@ -2,12 +2,10 @@ package com.arbaz.blog.Entity;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 @Getter
 @Setter
@@ -34,12 +32,10 @@ public class User{
     @Column(name = "About")
     private String about;
 
+    @Column(name = "Role")
+    private String userRole;
+
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Post> post = new ArrayList<>();
-
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role",joinColumns = @JoinColumn(name = "user",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role",referencedColumnName = "roleId"))
-    private Set<AuthenticationRoles> roles = new HashSet<AuthenticationRoles>();
 
 }

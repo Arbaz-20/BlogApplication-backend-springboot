@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -51,6 +52,13 @@ public class UserServiceImplementation implements UserService {
     public UserDTO getUserById(Integer userId) {
         User user = this.userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User","Id",userId));
         return this.UsertoUserDTO(user);
+    }
+
+    @Override
+    public UserDTO getUserByName(String name) {
+        Optional<User> user = userRepository.findByUserName(name);
+        UserDTO userDTO = this.modelMapper.map(user,UserDTO.class);
+        return userDTO;
     }
 
     //Get All Users

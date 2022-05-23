@@ -16,6 +16,8 @@ public interface UserService {
     //Get User by ID
     public UserDTO getUserById(Integer userId);
 
+    public UserDTO getUserByName(String name);
+
     //Get All Users
     List<UserDTO> getAllUser();
 

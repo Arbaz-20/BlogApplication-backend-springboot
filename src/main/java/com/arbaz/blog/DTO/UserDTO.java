@@ -28,4 +28,6 @@ public class UserDTO {
     @NotEmpty(message = "Please Enter Something About Yourself")
     @Size(min = 15,message = "Please Enter Something within 10 to 15 words")
     private String about;
+
+    private String role;
 }

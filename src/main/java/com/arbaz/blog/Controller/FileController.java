@@ -29,6 +29,7 @@ public class FileController {
     //Method to Save Image in the Images folder
     @PostMapping("/upload")
     public ResponseEntity<APIResponse> fileUpload(@RequestParam("image") MultipartFile file) throws Exception{
+
         String fileName = null;
 
             fileName = this.fileService.UploadImage(path, file);

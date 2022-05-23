@@ -28,6 +28,8 @@ public class PostDTO {
 
     private String imageName;
 
+    private String userRole;
+
     private CategoryDTO category;
 
     private UserDTO user;
