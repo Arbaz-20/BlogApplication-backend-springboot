@@ -94,6 +94,7 @@ public class UserController {
 
 
     //Authentication and Authorization of User
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/access/{userId}/{role}")
     public ResponseEntity<APIResponse> giveAccessToUser(@PathVariable("id") int userID, @PathVariable("role") String userRole, Principal principal){
         UserDTO userDTO = userService.getUserById(userID);
