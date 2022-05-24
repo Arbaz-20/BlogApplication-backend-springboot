@@ -50,6 +50,8 @@ public class UserController {
     //Update User
     @PutMapping(value = "/user/{id}")
     public ResponseEntity<?> UpdateUser(@Valid @RequestBody UserDTO userDTO,@PathVariable("id") int userId){
+        userDTO.setRole(DEFAULT_ROLE);
+        userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         UserDTO UpdateUser = this.userService.updateUser(userDTO,userId);
         return new ResponseEntity<>(UpdateUser,HttpStatus.OK);
     }
