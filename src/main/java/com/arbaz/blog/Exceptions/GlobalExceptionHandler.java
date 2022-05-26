@@ -1,6 +1,7 @@
 package com.arbaz.blog.Exceptions;
 
 import com.arbaz.blog.DTO.APIResponse;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +60,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MalformedJwtException.class)
     public ResponseEntity<APIResponse> malformedJwtException(MalformedJwtException malformedJwtException){
         String error = malformedJwtException.getMessage();
+        APIResponse apiResponse = new APIResponse(error,false);
+        return new ResponseEntity<APIResponse>(apiResponse,HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<APIResponse> expiredJWTException(ExpiredJwtException expiredJwtException){
+        String error = expiredJwtException.getMessage();
         APIResponse apiResponse = new APIResponse(error,false);
         return new ResponseEntity<APIResponse>(apiResponse,HttpStatus.FORBIDDEN);
     }

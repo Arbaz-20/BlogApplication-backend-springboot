@@ -1,9 +1,12 @@
 package com.arbaz.blog.Utils;
 
 
+import com.arbaz.blog.DTO.APIResponse;
 import com.arbaz.blog.ServiceImplementation.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Principal;
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
@@ -27,11 +31,13 @@ public class JwtFilter extends OncePerRequestFilter {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
+    String token = null;
+    String username = null;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        String token = null;
-        String username = null;
+
 
         String  authorizationHeader = request.getHeader("Authorization");
 
@@ -49,4 +55,12 @@ public class JwtFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(request,response);
     }
+
+    public ResponseEntity<APIResponse> ExpiredToken(Principal principal, boolean status, String message){
+        if(!jwtUtil.isTokenExpired(token)){
+            return new ResponseEntity<APIResponse>(new APIResponse(token,true),HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<APIResponse>(new APIResponse("Token is Expired with User "+principal.getName()+"",false),HttpStatus.FORBIDDEN);
+    }
+
 }
