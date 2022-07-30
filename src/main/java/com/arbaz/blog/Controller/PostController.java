@@ -38,7 +38,7 @@ public class PostController {
     private String path;
 
 
-    //We can use the Image post Mapping with this asWell it's all depend's on what we think of coding
+    //We can use the Image post Mapping with this asWell it's all Depends on what we think of coding
     //Create Post
     @PostMapping("/user/{userId}/category/{categoryId}/posts")
     public ResponseEntity<PostDTO>CreatePost(@RequestBody PostDTO postDTO, @PathVariable("userId") int userId,@PathVariable("categoryId") int categoryId){

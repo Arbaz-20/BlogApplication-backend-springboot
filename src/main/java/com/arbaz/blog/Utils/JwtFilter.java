@@ -37,8 +37,6 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-
-
         String  authorizationHeader = request.getHeader("Authorization");
 
         if(authorizationHeader!=null && authorizationHeader.startsWith("Bearer")){
@@ -54,13 +52,6 @@ public class JwtFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(request,response);
-    }
-
-    public ResponseEntity<APIResponse> ExpiredToken(Principal principal, boolean status, String message){
-        if(!jwtUtil.isTokenExpired(token)){
-            return new ResponseEntity<APIResponse>(new APIResponse(token,true),HttpStatus.FORBIDDEN);
-        }
-        return new ResponseEntity<APIResponse>(new APIResponse("Token is Expired with User "+principal.getName()+"",false),HttpStatus.FORBIDDEN);
     }
 
 }

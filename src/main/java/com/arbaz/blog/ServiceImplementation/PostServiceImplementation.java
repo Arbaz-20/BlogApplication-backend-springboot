@@ -1,6 +1,5 @@
 package com.arbaz.blog.ServiceImplementation;
 
-import com.arbaz.blog.Controller.PostController;
 import com.arbaz.blog.DTO.PostDTO;
 import com.arbaz.blog.DTO.PostResponse;
 import com.arbaz.blog.Entity.Category;
@@ -56,7 +55,7 @@ public class PostServiceImplementation implements PostService {
 
         //CreatingPost
         Post post = this.modelMapper.map(postDTO,Post.class);
-        post.setImageName("Default.png");
+        post.setImageName(postDTO.getImageName());
         post.setDate(new Date());
         post.setUser(user);
         post.setCategory(category);
