@@ -1,0 +1,263 @@
+
+
+
+url:
+    https://stackoverflow.com/questions/574594/how-can-i-create-an-executable-jar-with-dependencies-using-maven
+
+
+Lenovo@LAPTOP-O7IQI0N2 MINGW64 ~/OneDrive/Documents/NetBeansProjects/Ganiban_s
+$ mvn clean compile assembly:single
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< com.styleattribute:Ganiban_s >--------------------
+[INFO] Building Ganiban_s 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ Ganiban_s ---
+[INFO] Deleting C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\target
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Ganiban_s ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\src\main\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ Ganiban_s ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files to C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\target\classes
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Some input files use or override a deprecated API.
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-assembly-plugin:2.2-beta-5:single (default-cli) @ Ganiban_s ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.542 s
+[INFO] Finished at: 2021-06-06T22:54:21+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:single (default-cli) on project Ganiban_s: Error reading assemblies: No assembly descriptors found. -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+
+Lenovo@LAPTOP-O7IQI0N2 MINGW64 ~/OneDrive/Documents/NetBeansProjects/Ganiban_s
+$ mvn clean compile assembly:single
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< com.styleattribute:Ganiban_s >--------------------
+[INFO] Building Ganiban_s 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ Ganiban_s ---
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Ganiban_s ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\src\main\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ Ganiban_s ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files to C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\target\classes
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Some input files use or override a deprecated API.
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-assembly-plugin:2.2-beta-5:single (default-cli) @ Ganiban_s ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.611 s
+[INFO] Finished at: 2021-06-06T22:54:51+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:single (default-cli) on project Ganiban_s: Error reading assemblies: No assembly descriptors found. -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+
+Lenovo@LAPTOP-O7IQI0N2 MINGW64 ~/OneDrive/Documents/NetBeansProjects/Ganiban_s
+$ mvn clean compile assembly:single
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< com.styleattribute:Ganiban_s >--------------------
+[INFO] Building Ganiban_s 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ Ganiban_s ---
+[INFO] Deleting C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\target
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Ganiban_s ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\src\main\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ Ganiban_s ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files to C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\target\classes
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Some input files use or override a deprecated API.
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-assembly-plugin:2.2-beta-5:single (default-cli) @ Ganiban_s ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.300 s
+[INFO] Finished at: 2021-06-06T22:56:12+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:single (default-cli) on project Ganiban_s: Error reading assemblies: No assembly descriptors found. -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+
+Lenovo@LAPTOP-O7IQI0N2 MINGW64 ~/OneDrive/Documents/NetBeansProjects/Ganiban_s
+$ mvn clean
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< com.styleattribute:Ganiban_s >--------------------
+[INFO] Building Ganiban_s 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ Ganiban_s ---
+[INFO] Deleting C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.307 s
+[INFO] Finished at: 2021-06-06T22:56:19+05:30
+[INFO] ------------------------------------------------------------------------
+
+Lenovo@LAPTOP-O7IQI0N2 MINGW64 ~/OneDrive/Documents/NetBeansProjects/Ganiban_s
+$ mvn clean compile assembly:single
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< com.styleattribute:Ganiban_s >--------------------
+[INFO] Building Ganiban_s 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ Ganiban_s ---
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Ganiban_s ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\src\main\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ Ganiban_s ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files to C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\target\classes
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Some input files use or override a deprecated API.
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-assembly-plugin:2.2-beta-5:single (default-cli) @ Ganiban_s ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.320 s
+[INFO] Finished at: 2021-06-06T22:56:26+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:single (default-cli) on project Ganiban_s: Error reading assemblies: No assembly descriptors found. -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+
+Lenovo@LAPTOP-O7IQI0N2 MINGW64 ~/OneDrive/Documents/NetBeansProjects/Ganiban_s
+$ mvn clean compile assembly:central
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.298 s
+[INFO] Finished at: 2021-06-06T22:56:33+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Could not find goal 'central' in plugin org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5 among available goals directory, assembly, directory-single, attached, single, help, unpack, directory-inline -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoNotFoundException
+
+Lenovo@LAPTOP-O7IQI0N2 MINGW64 ~/OneDrive/Documents/NetBeansProjects/Ganiban_s
+$ mvn clean compile assembly:single
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< com.styleattribute:Ganiban_s >--------------------
+[INFO] Building Ganiban_s 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ Ganiban_s ---
+[INFO] Deleting C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\target
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Ganiban_s ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\src\main\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ Ganiban_s ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files to C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\target\classes
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Some input files use or override a deprecated API.
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-assembly-plugin:2.2-beta-5:single (default-cli) @ Ganiban_s ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.304 s
+[INFO] Finished at: 2021-06-06T22:56:43+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:single (default-cli) on project Ganiban_s: Error reading assemblies: No assembly descriptors found. -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+
+Lenovo@LAPTOP-O7IQI0N2 MINGW64 ~/OneDrive/Documents/NetBeansProjects/Ganiban_s
+$ mvn clean compile assembly:single^C
+
+Lenovo@LAPTOP-O7IQI0N2 MINGW64 ~/OneDrive/Documents/NetBeansProjects/Ganiban_s
+$ mvn clean compile assembly:single
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/2.8/maven-dependency-plugin-2.8.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/2.8/maven-dependency-plugin-2.8.pom (11 kB at 8.8 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/2.8/maven-dependency-plugin-2.8.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/2.8/maven-dependency-plugin-2.8.jar (153 kB at 207 kB/s)
+[INFO]
+[INFO] --------------------< com.styleattribute:Ganiban_s >--------------------
+[INFO] Building Ganiban_s 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ Ganiban_s ---
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Ganiban_s ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\src\main\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ Ganiban_s ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files to C:\Users\Lenovo\OneDrive\Documents\NetBeansProjects\Ganiban_s\target\classes
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Some input files use or override a deprecated API.
+[WARNING] /C:/Users/Lenovo/OneDrive/Documents/NetBeansProjects/Ganiban_s/src/main/java/com/styleattribute/ganiban_s/Security_key.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-assembly-plugin:2.2-beta-5:single (default-cli) @ Ganiban_s ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.889 s
+[INFO] Finished at: 2021-06-06T23:02:45+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:single (default-cli) on project Ganiban_s: Error reading assemblies: No assembly descriptors found. -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+
+Lenovo@LAPTOP-O7IQI0N2 MINGW64 ~/OneDrive/Documents/NetBeansProjects/Ganiban_s
+$
