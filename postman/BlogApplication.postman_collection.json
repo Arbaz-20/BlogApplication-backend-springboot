@@ -1,0 +1,334 @@
+{
+  "info": {
+    "name": "Blog Application - Spring Boot",
+    "_postman_id": "8a1c2f3e-4b5d-6e7f-8a9b-1c2d3e4f5a6b",
+    "description": "Postman collection for the Blog Application Spring Boot backend. Includes Auth, Users, Categories, Posts, Comments and File endpoints. Set the {{baseUrl}} and {{token}} variables (token is auto-saved after /auth/login).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "token", "value": "" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login (get JWT)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "  const json = pm.response.json();",
+                  "  if (json && json.message) {",
+                  "    pm.collectionVariables.set('token', json.message);",
+                  "    console.log('Token saved');",
+                  "  }",
+                  "} catch (e) { console.log('Could not parse token', e); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"arbaz\",\n  \"password\": \"password123\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Create User (Register)",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/user", "host": ["{{baseUrl}}"], "path": ["user"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"arbaz\",\n  \"password\": \"password123\",\n  \"email\": \"arbaz@example.com\",\n  \"about\": \"I love writing blogs about tech\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/user/1", "host": ["{{baseUrl}}"], "path": ["user", "1"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"arbaz updated\",\n  \"password\": \"password123\",\n  \"email\": \"arbaz@example.com\",\n  \"about\": \"Updated info about myself goes here\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Users (Admin only)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/getUsers", "host": ["{{baseUrl}}"], "path": ["getUsers"] }
+          }
+        },
+        {
+          "name": "Get User By Id",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/getUser/1", "host": ["{{baseUrl}}"], "path": ["getUser", "1"] }
+          }
+        },
+        {
+          "name": "Delete User By Id (Admin only)",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/delete/1", "host": ["{{baseUrl}}"], "path": ["delete", "1"] }
+          }
+        },
+        {
+          "name": "Delete All Users",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/del", "host": ["{{baseUrl}}"], "path": ["del"] }
+          }
+        },
+        {
+          "name": "Give Access / Role (Admin only)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/access/1/ROLE_ADMIN", "host": ["{{baseUrl}}"], "path": ["access", "1", "ROLE_ADMIN"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Category",
+      "item": [
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/category/create", "host": ["{{baseUrl}}"], "path": ["category", "create"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"categoryTitle\": \"Technology\",\n  \"categoryDescription\": \"All posts related to technology\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/category/category/1", "host": ["{{baseUrl}}"], "path": ["category", "category", "1"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"categoryTitle\": \"Updated Tech\",\n  \"categoryDescription\": \"Updated category description here\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Category By Id",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/category/getCategory/1", "host": ["{{baseUrl}}"], "path": ["category", "getCategory", "1"] }
+          }
+        },
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/category/getAllCategories", "host": ["{{baseUrl}}"], "path": ["category", "getAllCategories"] }
+          }
+        },
+        {
+          "name": "Delete Category By Id",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/category/delete/1", "host": ["{{baseUrl}}"], "path": ["category", "delete", "1"] }
+          }
+        },
+        {
+          "name": "Delete All Categories",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/category/delete", "host": ["{{baseUrl}}"], "path": ["category", "delete"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Post",
+      "item": [
+        {
+          "name": "Create Post",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/post/user/1/category/1/posts", "host": ["{{baseUrl}}"], "path": ["post", "user", "1", "category", "1", "posts"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"My First Blog Post\",\n  \"content\": \"This is the content of my first blog post.\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Post",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/post/update/1", "host": ["{{baseUrl}}"], "path": ["post", "update", "1"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Title\",\n  \"content\": \"Updated content for the post.\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Posts By User",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/post/user/1/posts", "host": ["{{baseUrl}}"], "path": ["post", "user", "1", "posts"] }
+          }
+        },
+        {
+          "name": "Get Posts By Category",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/post/category/1/posts", "host": ["{{baseUrl}}"], "path": ["post", "category", "1", "posts"] }
+          }
+        },
+        {
+          "name": "Get All Posts (paginated)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/post/getAllPost?pageNumber=0&pageSize=5&sortBy=postId&sortDirection=ascending",
+              "host": ["{{baseUrl}}"],
+              "path": ["post", "getAllPost"],
+              "query": [
+                { "key": "pageNumber", "value": "0" },
+                { "key": "pageSize", "value": "5" },
+                { "key": "sortBy", "value": "postId" },
+                { "key": "sortDirection", "value": "ascending" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Post By Id",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/post/getPost/1", "host": ["{{baseUrl}}"], "path": ["post", "getPost", "1"] }
+          }
+        },
+        {
+          "name": "Delete Post By Id",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/post/delete/1", "host": ["{{baseUrl}}"], "path": ["post", "delete", "1"] }
+          }
+        },
+        {
+          "name": "Delete All Posts",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/post/deleteAll", "host": ["{{baseUrl}}"], "path": ["post", "deleteAll"] }
+          }
+        },
+        {
+          "name": "Search Posts By Keyword",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/post/posts/spring", "host": ["{{baseUrl}}"], "path": ["post", "posts", "spring"] }
+          }
+        },
+        {
+          "name": "Upload Post Image",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/post/image/upload/1", "host": ["{{baseUrl}}"], "path": ["post", "image", "upload", "1"] },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "image", "type": "file", "src": [] }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Download Post Image",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/post/profile/sample.jpg", "host": ["{{baseUrl}}"], "path": ["post", "profile", "sample.jpg"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Comment",
+      "item": [
+        {
+          "name": "Create Comment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/post/1/comments", "host": ["{{baseUrl}}"], "path": ["post", "1", "comments"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Nice post!\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Comment",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/delete/comment/1", "host": ["{{baseUrl}}"], "path": ["delete", "comment", "1"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "File",
+      "item": [
+        {
+          "name": "Upload File",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/file/upload", "host": ["{{baseUrl}}"], "path": ["file", "upload"] },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "image", "type": "file", "src": [] }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Download File",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/file/profile/sample.jpg", "host": ["{{baseUrl}}"], "path": ["file", "profile", "sample.jpg"] }
+          }
+        }
+      ]
+    }
+  ]
+}
