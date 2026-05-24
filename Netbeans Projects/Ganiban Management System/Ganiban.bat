@@ -1,1 +1,0 @@
-start  "" "C:/Program Files/Java/jdk-17.0.3.1/bin/javaw.exe" -Xmx1024M -Xms1024M -jar C:/Users/arbaz/OneDrive/Documents/NetBeansProjects/Ganiban_s/target/Ganiban_s-1.0-SNAPSHOT.jar  
